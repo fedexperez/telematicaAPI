@@ -48,7 +48,7 @@ class CarController extends Controller
             'disponible' => $request->get('disponible')
         ]);
         $car->save();
-        return redirect('/api/cars')->with('success', 'Car saved!');
+        return redirect()->route('cars.index')->with('success', 'Car saved!');
         // dd($request->all());
     }
 
@@ -95,7 +95,7 @@ class CarController extends Controller
         $car->disponible = $request->get('disponible');
         $car->save();
 
-        return redirect('/api/cars')->with('success', 'Car updated!');
+        return redirect()->route('cars.index')->with('success', 'Car updated!');
     }
 
     /**
@@ -109,6 +109,6 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
         $car->delete();
 
-        return redirect('/api/cars')->with('success', 'Car deleted!');
+        return redirect()->route('cars.index')->with('success', 'Car deleted!');
     }
 }
